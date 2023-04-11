@@ -2,60 +2,35 @@
 <html>
 <head>
 	<title>PolCam data for internal users</title>
-	<style>
-		.thumbnail {
-			width: 100px;
-			height: 100px;
-			cursor: pointer;
-		}
-		.full-image {
-			max-width: 100%;
-			max-height: 100%;
-		}
-		.image-container {
-			display: flex;
-		}
-	</style>
 	<script>
 		function showImage() {
-			var select = document.getElementById("select");
-			var thumbnail = document.getElementById("thumbnail");
-			var fullImage = document.getElementById("full-image");
-			var imageContainer = document.getElementById("image-container");
-			var imageSrc = select.value;
-			thumbnail.src = imageSrc;
-			thumbnail.alt = select.options[select.selectedIndex].text;
-			fullImage.src = imageSrc;
-			fullImage.alt = select.options[select.selectedIndex].text;
-			fullImage.title = "Click to close the full image";
-			imageContainer.style.display = "flex";
-		}
-		
-		function hideImage() {
-			var imageContainer = document.getElementById("image-container");
-			imageContainer.style.display = "none";
+			var selectedValue = document.getElementById("filename").value;
+			var img = document.getElementById("data-image");
+			if (selectedValue === "230330_00101") {
+				img.src = "test1.png";
+			} else if (selectedValue === "230330_00102") {
+				img.src = "test2.png";
+			} else if (selectedValue === "230330_00103") {
+				img.src = "test3.png";
+			} else if (selectedValue === "230330_00104") {
+				img.src = "test4.png";
+			} else {
+				img.src = "";
+			}
 		}
 	</script>
 </head>
-	
 <body>
 	<h1>PolCam data for internal users</h1>
-	<label for="select">Select a data from the list:</label>
-	<select id="select" onchange="showImage()">
-		<option value="230330_00101.png">230330_00101</option>
-		<option value="230330_00102.png">230330_00102</option>
-		<option value="230330_00103.png">230330_00103</option>
-		<option value="230330_00104.png">230330_00104</option>
+	<p>Select data from the list:</p>
+	<select id="filename" onchange="showImage()">
+		<option value="">--Please select--</option>
+		<option value="230330_00101">230330_00101</option>
+		<option value="230330_00102">230330_00102</option>
+		<option value="230330_00103">230330_00103</option>
+		<option value="230330_00104">230330_00104</option>
 	</select>
-	<div id="image-container" style="display: none">
-		<div>
-			<p>Thumbnail of the selected image:</p>
-			<img id="thumbnail" class="thumbnail" src="" alt="" title="Click to view full image" onclick="document.getElementById('full-image').style.display='block'">
-		</div>
-		<div>
-			<p>Full image:</p>
-			<img id="full-image" class="full-image" src="" alt="" title="Click to close the full image" style="display: none" onclick="hideImage()">
-		</div>
-	</div>
+	<br>
+	<img id="data-image" src="" alt="">
 </body>
 </html>
