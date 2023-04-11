@@ -22,16 +22,24 @@
 </head>
 <body>
 	<h1>PolCam data for internal users</h1>
-	<p>Select data from the list:</p>
-	<select id="filename" onchange="showImage()">
-		<option value="">--Please select--</option>
-		<option value="230330_00101">230330_00101</option>
-		<option value="230330_00102">230330_00102</option>
-		<option value="230330_00103">230330_00103</option>
-		<option value="230330_00104">230330_00104</option>
-	</select>
-	<br>
-	<img id="data-image" src="" alt="">
+	<table border=0>
+		<tr><td>
+	    		<p>Select data from the list:</p>
+		</td></tr>
+		<tr><td>
+			<select id="filename" onchange="showImage()">
+				<option value="">--Please select--</option>
+				<option value="230330_00101">230330_00101</option>
+				<option value="230330_00102">230330_00102</option>
+				<option value="230330_00103">230330_00103</option>
+				<option value="230330_00104">230330_00104</option>
+			</select>
+		</td>
+		<td>
+			<img id="data-image" src="" alt="">
+		</td>
+		</tr>
+	</table>
 	<br>
 	<br>
 	<ul>
