@@ -5,18 +5,18 @@
 	
 	<script>
 		function previewImage() {
-			// ì„ íƒëœ ì˜µì…˜ì˜ ê°’ì„ ê°€ì ¸ì˜´
+			// ¼±ÅÃµÈ ¿É¼ÇÀÇ °ªÀ» °¡Á®¿È
 			var selectedValue = document.getElementById("file-selector").value;
-			// ì´ë¯¸ì§€ë¥¼ ë³´ì—¬ì¤„ <img> ìš”ì†Œ ìƒì„±
+			// ÀÌ¹ÌÁö¸¦ º¸¿©ÁÙ <img> ¿ä¼Ò »ı¼º
 			var img = document.createElement("img");
-			img.src = "png/"+selectedValue+".png";		
+			img.src = "png/"+selectedValue+".png";			
 			img.width = "1024";
-			// ì´ë¯¸ì§€ë¥¼ ë³´ì—¬ì¤„ <div> ìš”ì†Œì— ì¶”ê°€
+			// ÀÌ¹ÌÁö¸¦ º¸¿©ÁÙ <div> ¿ä¼Ò¿¡ Ãß°¡
 			var imageContainer = document.getElementById("image-container");
 			imageContainer.innerHTML = "";
 			imageContainer.appendChild(img);
     			
-      // ì„ íƒí•œ íŒŒì¼ëª…ì„ í…ìŠ¤íŠ¸ë¡œ í™”ë©´ì— ì¶œë ¥
+      // ¼±ÅÃÇÑ ÆÄÀÏ¸íÀ» ÅØ½ºÆ®·Î È­¸é¿¡ Ãâ·Â
       var selectedFileText = document.getElementById("selected-file-text");
       selectedFileText.innerHTML = "Current file: " + selectedValue;
 		}
@@ -391,9 +391,12 @@
         <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N10_N20">KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N10_N20</option>
         <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N20_N30">KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N20_N30</option>
     	</select>
+	  </td><td>
+	    <p><a href="orbit.html">Link to orbit information...</a></p>
 	  </td></tr>
  	</table>
-  	
+ 
+  
   <p id="selected-file-text"></p> 
 	<div id="image-container"></div>
    
