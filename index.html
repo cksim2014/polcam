@@ -5,17 +5,24 @@
 	<script>
 		function showImage() {
 			var selectedValue = document.getElementById("filename").value;
-			var img = document.getElementById("data-image");
+
+			var thumbnail = document.getElementById("thumbnail-image");
+			var fullImage = document.getElementById("full-image");
 			if (selectedValue === "230330_00101") {
-				img.src = "test1.png";
+				thumbnail.src = "test1_thumb.png";
+				fullImage.src = "test1.png";
 			} else if (selectedValue === "230330_00102") {
-				img.src = "test2.png";
+				thumbnail.src = "test2_thumb.png";
+				fullImage.src = "test2.png";
 			} else if (selectedValue === "230330_00103") {
-				img.src = "test3.png";
+				thumbnail.src = "test3_thumb.png";
+				fullImage.src = "test3.png";
 			} else if (selectedValue === "230330_00104") {
-				img.src = "test4.png";
+				thumbnail.src = "test4_thumb.png";
+				fullImage.src = "test4.png";
 			} else {
-				img.src = "";
+				thumbnail.src = "";
+				fullImage.src = "";
 			}
 		}
 	</script>
@@ -50,7 +57,15 @@
 				<p></p>
 			</td>
 			<td style ='vertical-align:top'>
-				<img id="data-image" src="" alt="">
+
+				<a href="#" onclick="document.getElementById('full-image').style.display='block';return false;">
+					<img id="thumbnail-image" src="" alt="">
+				</a>
+				<div id="full-image" style="display:none">
+					<a href="#" onclick="document.getElementById('full-image').style.display='none';return false;">
+						<img src="" alt="">
+					</a>
+				</div>
 			</td>
 			<td>
 				<p></p>
