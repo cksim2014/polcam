@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Webpage</title>
+	<script>
+		function showImage() {
+			var selectedValue = document.getElementById("fruit").value;
+			var img = document.getElementById("fruit-image");
+			if (selectedValue === "apple") {
+				img.src = "apple.png";
+			} else if (selectedValue === "banana") {
+				img.src = "banana.png";
+			} else if (selectedValue === "orange") {
+				img.src = "orange.png";
+			} else if (selectedValue === "strawberry") {
+				img.src = "strawberry.png";
+			} else {
+				img.src = "";
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>Welcome to my webpage</h1>
+	<p>Please select your favorite fruit from the list:</p>
+	<select id="fruit" onchange="showImage()">
+		<option value="">--Please select--</option>
+		<option value="apple">Apple</option>
+		<option value="banana">Banana</option>
+		<option value="orange">Orange</option>
+		<option value="strawberry">Strawberry</option>
+	</select>
+	<img id="fruit-image" src="" alt="">
+</body>
+</html>
