@@ -5,18 +5,18 @@
 	
 	<script>
 		function previewImage() {
-			// ¼±ÅÃµÈ ¿É¼ÇÀÇ °ªÀ» °¡Á®¿È
+			// ì„ íƒëœ ì˜µì…˜ì˜ ê°’ì„ ê°€ì ¸ì˜´
 			var selectedValue = document.getElementById("file-selector").value;
-			// ÀÌ¹ÌÁö¸¦ º¸¿©ÁÙ <img> ¿ä¼Ò »ı¼º
+			// ì´ë¯¸ì§€ë¥¼ ë³´ì—¬ì¤„ <img> ìš”ì†Œ ìƒì„±
 			var img = document.createElement("img");
 			img.src = "png/"+selectedValue+".png";			
 			img.width = "1024";
-			// ÀÌ¹ÌÁö¸¦ º¸¿©ÁÙ <div> ¿ä¼Ò¿¡ Ãß°¡
+			// ì´ë¯¸ì§€ë¥¼ ë³´ì—¬ì¤„ <div> ìš”ì†Œì— ì¶”ê°€
 			var imageContainer = document.getElementById("image-container");
 			imageContainer.innerHTML = "";
 			imageContainer.appendChild(img);
     			
-      // ¼±ÅÃÇÑ ÆÄÀÏ¸íÀ» ÅØ½ºÆ®·Î È­¸é¿¡ Ãâ·Â
+      // ì„ íƒí•œ íŒŒì¼ëª…ì„ í…ìŠ¤íŠ¸ë¡œ í™”ë©´ì— ì¶œë ¥
       var selectedFileText = document.getElementById("selected-file-text");
       selectedFileText.innerHTML = "Current file: " + selectedValue;
 		}
@@ -24,7 +24,7 @@
     
 </head>
 <body>
-	<h1>PolCam data for internal users</h1>
+	<h1>PolCam data for internal users (Observational data)</h1>
 
   <table>
     <tr><td>
