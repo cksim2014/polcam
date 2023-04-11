@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,3 +35,50 @@
 	<img id="data-image" src="" alt="">
 </body>
 </html> 
+
+-->
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>List of PNG Files</title>
+	<script>
+		window.onload = function() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var files = JSON.parse(this.responseText);
+					var list = document.getElementById("fileList");
+					for (var i = 0; i < files.length; i++) {
+						var li = document.createElement("li");
+						var a = document.createElement("a");
+						a.href = "#";
+						a.onclick = function() {
+							showImage(this.dataset.filename);
+						};
+						a.dataset.filename = files[i];
+						a.innerHTML = files[i];
+						li.appendChild(a);
+						list.appendChild(li);
+					}
+				}
+			};
+			xhttp.open("GET", "./png/list.php", true);
+			xhttp.send();
+		};
+
+		function showImage(filename) {
+			document.getElementById('image').src = './png/' + filename;
+		}
+	</script>
+</head>
+<body>
+	<h1>List of PNG Files</h1>
+	<ul id="fileList"></ul>
+	<img id="image" src="" alt="Image">
+</body>
+</html>
