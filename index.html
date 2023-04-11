@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My Webpage</title>
+	<title>PolCam data for internal users</title>
 	<script>
 		function showImage() {
 			var selectedValue = document.getElementById("fruit").value;
-			var img = document.getElementById("fruit-image");
-			if (selectedValue === "apple") {
+			var img = document.getElementById("data-image");
+			if (selectedValue === "230330_00101") {
 				img.src = "apple.png";
-			} else if (selectedValue === "banana") {
+			} else if (selectedValue === "230330_00102") {
 				img.src = "banana.png";
-			} else if (selectedValue === "orange") {
+			} else if (selectedValue === "230330_00103") {
 				img.src = "orange.png";
-			} else if (selectedValue === "strawberry") {
+			} else if (selectedValue === "230330_00104") {
 				img.src = "strawberry.png";
 			} else {
 				img.src = "";
@@ -21,15 +21,15 @@
 	</script>
 </head>
 <body>
-	<h1>Welcome to my webpage</h1>
-	<p>Please select your favorite fruit from the list:</p>
+	<h1>PolCam data for internal users</h1>
+	<p>Select data from the list:</p>
 	<select id="fruit" onchange="showImage()">
 		<option value="">--Please select--</option>
-		<option value="apple">Apple</option>
-		<option value="banana">Banana</option>
-		<option value="orange">Orange</option>
-		<option value="strawberry">Strawberry</option>
+		<option value="apple">230330_00101</option>
+		<option value="banana">230330_00102</option>
+		<option value="orange">230330_00103</option>
+		<option value="strawberry">230330_00104</option>
 	</select>
-	<img id="fruit-image" src="" alt="">
+	<img id="data-image" src="" alt="">
 </body>
 </html>
