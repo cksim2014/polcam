@@ -1,78 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PolCam data for internal users</title>
-	<script>
-		function showImage() {
-			var selectedValue = document.getElementById("filename").value;
-
-			<!--var thumbnail = document.getElementById("thumbnail-image");-->
-			var fullImage = document.getElementById("full-image");
-			if (selectedValue === "230330_00101") {
-				<!--thumbnail.src = "test1_thumb.png";-->
-				fullImage.src = "test1.png";
-			} else if (selectedValue === "230330_00102") {
-				<!--thumbnail.src = "test2_thumb.png";-->
-				fullImage.src = "test2.png";
-			} else if (selectedValue === "230330_00103") {
-				<!--thumbnail.src = "test3_thumb.png";-->
-				fullImage.src = "test3.png";
-			} else if (selectedValue === "230330_00104") {
-				<!--thumbnail.src = "test4_thumb.png";-->
-				fullImage.src = "test4.png";
-			} else {
-				<!--thumbnail.src = "";
-				fullImage.src = "";
-			}
-		}
-	</script>
+  <title>GitHub Images</title>
 </head>
 <body>
-	<h1>PolCam data for internal users</h1>
-	<table border=1>
-		<tr>
-			<td>
-	    			<p>Select data from the list:</p>
-			</td>
-		</tr>
-		<tr>
-			<td style ='vertical-align:top'>
-				<select id="filename" onchange="showImage()">
-					<option value="">--Please select--</option>
-					<option value="230330_00101">230330_00101</option>
-					<option value="230330_00102">230330_00102</option>
-					<option value="230330_00103">230330_00103</option>
-					<option value="230330_00104">230330_00104</option>
-				</select>
-			</td>
-			<td>
-				:: Download link for header file here ::
-			</td>	
-			<td>
-				:: Download link for png file here ::
-			</td>	
-		</tr>
-		<tr>
-			<td>
-				<p></p>
-			</td>
-			<td style ='vertical-align:top'>
-<!--
-				<a href="#" onclick="document.getElementById('thumb-image').style.display='block';return false;">
-					<img id="thumbnail-image" src="" alt="">
-				</a>
-				<div id="full-image" style="display:none">
-					<a href="#" onclick="document.getElementById('full-image').style.display='none';return false;">
-						<img id="full-image" src="" alt="">
-					</a>
-				</div>		
-		-->
-			</td>
-			<td>
-				<img id="full-image" src="" alt="">
-			</td>
-		</tr>
-	</table>
+  <h1>Select an image:</h1>
+  <select id="file-list" onchange="showImage()">
+    <option value="">Select a file...</option>
+  </select>
+  <br>
+  <img id="image" src="" alt="Selected Image" width="500">
+  
+  <script>
+    var url = "https://api.github.com/repos/cksim2014/polcam/png";
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var response = JSON.parse(xhr.responseText);
+        var select = document.getElementById("file-list");
+        for (var i = 0; i < response.length; i++) {
+          var file = response[i];
+          if (file.type == "file" && file.name.endsWith(".png")) {
+            var option = document.createElement("option");
+            option.value = file.download_url;
+            option.text = file.name;
+            select.add(option);
+          }
+        }
+      }
+    };
+    xhr.open("GET", url, true);
+    xhr.send();
 
+    function showImage() {
+      var select = document.getElementById("file-list");
+      var url = select.value;
+      var image = document.getElementById("image");
+      image.src = url;
+    }
+  </script>
 </body>
-</html> 
+</html>
