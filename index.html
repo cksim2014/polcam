@@ -1,43 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GitHub Images</title>
+	<title>GitHub 페이지 예시</title>
 </head>
 <body>
-  <h1>Select an image:</h1>
-  <select id="file-list" onchange="showImage()">
-    <option value="">Select a file...</option>
-  </select>
-  <br>
-  <img id="image" src="" alt="Selected Image" width="500">
-  
-  <script>
-    var url = "https://api.github.com/repos/cksim2014/polcam/png";
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        var response = JSON.parse(xhr.responseText);
-        var select = document.getElementById("file-list");
-        for (var i = 0; i < response.length; i++) {
-          var file = response[i];
-          if (file.type == "file" && file.name.endsWith(".png")) {
-            var option = document.createElement("option");
-            option.value = file.download_url;
-            option.text = file.name;
-            select.add(option);
-          }
-        }
-      }
-    };
-    xhr.open("GET", url, true);
-    xhr.send();
+	<h1>GitHub 페이지 예시</h1>
+	<div id="fileListContainer">
+		<p>파일 목록:</p>
+		<ul id="fileList"></ul>
+	</div>
+	<div id="linkContainer">
+		<p>선택한 파일:</p>
+		<p id="selectedFile"></p>
+	</div>
 
-    function showImage() {
-      var select = document.getElementById("file-list");
-      var url = select.value;
-      var image = document.getElementById("image");
-      image.src = url;
-    }
-  </script>
+	<script>
+		var path = "./png"; // 파일이 있는 폴더 경로
+		var fileExtension = ".png"; // 보여줄 파일의 확장자 (예: ".txt")
+
+		// 폴더 내 파일 목록 가져오기
+		fetch(path)
+			.then(response => response.text())
+			.then(data => {
+				var parser = new DOMParser();
+				var html = parser.parseFromString(data, "text/html");
+				var fileList = html.querySelectorAll("a");
+				var files = [];
+				for (var i = 0; i < fileList.length; i++) {
+					var file = fileList[i];
+					var fileName = file.getAttribute("href");
+					if (fileName.endsWith(fileExtension)) {
+						files.push(fileName);
+					}
+				}
+
+				// 파일 목록을 동적으로 생성
+				var fileListElement = document.getElementById("fileList");
+				files.forEach(function(fileName) {
+					var listItem = document.createElement("li");
+					var link = document.createElement("a");
+					link.setAttribute("href", "javascript:void(0)");
+					link.innerHTML = fileName;
+					listItem.appendChild(link);
+					fileListElement.appendChild(listItem);
+
+					// 파일 선택 시 링크 생성
+					link.addEventListener("click", function() {
+						var selectedFileElement = document.getElementById("selectedFile");
+						selectedFileElement.innerHTML = "<a href='" + path + "/" + fileName + "'>" + fileName + "</a>";
+					});
+				});
+			})
+			.catch(error => console.log("Error fetching file list: " + error));
+	</script>
 </body>
 </html>
