@@ -9,7 +9,8 @@
 			var selectedValue = document.getElementById("file-selector").value;
 			// 이미지를 보여줄 <img> 요소 생성
 			var img = document.createElement("img");
-			img.src = "png/"+selectedValue+".png";
+			img.src = "png/"+selectedValue+".png";		
+			img.width = "1024";
 			// 이미지를 보여줄 <div> 요소에 추가
 			var imageContainer = document.getElementById("image-container");
 			imageContainer.innerHTML = "";
