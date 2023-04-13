@@ -10,7 +10,7 @@
 			// 이미지를 보여줄 <img> 요소 생성
 			var img = document.createElement("img");
 			img.src = "png/"+selectedValue+".png";			
-			img.width = "1024";
+			img.width = "600";
 			// 이미지를 보여줄 <div> 요소에 추가
 			var imageContainer = document.getElementById("image-container");
 			imageContainer.innerHTML = "";
@@ -22,41 +22,6 @@
 		}
 	</script>
     
-</head>
-<body>
-	<h1>PolCam data for internal users (Observational data)</h1>
-
-  <table>
-    <tr><td>
-    	<p>Select data from the list:</p>
-    </td><td>
-<!--    	<select id="file-selector" onchange="previewImage()">
-    		<option value="">--Please select--</option>
-        <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N00_N10">KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N00_N10</option>
-        <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N10_N20">KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N10_N20</option>
-        <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N20_N30">KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N20_N30</option>
-        <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N00_N10">KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N00_N10</option>
-        <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N10_N20">KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N10_N20</option>
-        <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N20_N30">KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N20_N30</option>
-        <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N00_N10">KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N00_N10</option>
-        <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N10_N20">KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N10_N20</option>
-        <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N20_N30">KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N20_N30</option>
-        <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N00_N10">KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N00_N10</option>
-        <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N10_N20">KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N10_N20</option>
-        <option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N20_N30">KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N20_N30</option>
-    	</select> -->
-      
-      <select id="dynamic-options"></select>
-    
-	  </td><td>
-	    <p><a href="orbit.html" target="_blank">Link to orbit information...</a></p>
-	  </td></tr>
- 	</table>
- 
-  
-  <p id="selected-file-text"></p> 
-	<div id="image-container"></div>
-   
 	<script>  
 		const select = document.getElementById('dynamic-options');
 		const optionsUrl = 'filelist_data.txt';
@@ -76,5 +41,43 @@
 		  })
 		  .catch(error => console.error(error));
 	</scipt>
+</head>
+<body>
+	<h1>PolCam data for internal users (Observational data)</h1>
+
+	<table>
+    		<tr><td>
+    			<p>Select data from the list:</p>
+		</td><td>
+			<select id="file-selector" onchange="previewImage()" size=20>
+				<option value="">--Please select--</option>
+				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N00_N10">KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N00_N10</option>
+				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N10_N20">KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N10_N20</option>
+				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N20_N30">KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N20_N30</option>
+				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N00_N10">KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N00_N10</option>
+				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N10_N20">KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N10_N20</option>
+				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N20_N30">KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N20_N30</option>
+				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N00_N10">KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N00_N10</option>
+				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N10_N20">KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N10_N20</option>
+				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N20_N30">KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N20_N30</option>
+				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N00_N10">KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N00_N10</option>
+				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N10_N20">KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N10_N20</option>
+				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N20_N30">KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N20_N30</option>
+			</select> 
+      
+			<select id="dynamic-options"></select>
+    
+		</td><td>
+			<p><a href="orbit.html" target="_blank">Link to orbit information...</a></p>
+		</td></tr>
+		<tr><td style="vertical-align:top" width=200>
+			<p id="selected-file-text"></p> 
+			<div id="image-container"></div>
+		<tr><td style="vertical-align:top" width=600>
+		<tr><td style="vertical-align:top" width=400>
+			header here
+		</td></tr>
+	</table>
+
 </body>
 </html>
