@@ -42,13 +42,13 @@
 <body>
 	<h1>PolCam data for internal users (Observational data)</h1>
   <p><a href="orbit.html" target="_blank">Link to orbit information...</a></p>
-  <p>Select data from the list:</p>
 
   <table>
-    <tr><td style="vertical-align:top", width=250>
+    <tr><td>
+    	<p>Select data from the list:</p> 
       <div class="block1">
       <div class="block2">
-        <select id="file-selector" onchange="previewImage()", size=500>
+        <select id="file-selector" onchange="previewImage()", size=600>
           <optgroup label="2023/03">
           <option value="KPLO_POLCAM_MR_20230326_CAM1_1212_0392712_N00_N10">KPLO_POLCAM_MR_20230326_CAM1_1212_0392712_N00_N10</option>
           <option value="KPLO_POLCAM_MR_20230326_CAM1_1212_0392712_N10_N20">KPLO_POLCAM_MR_20230326_CAM1_1212_0392712_N10_N20</option>
@@ -413,12 +413,13 @@
           </optgroup>
         </select>
       </div></div>
-	  </td></tr>
+    </td><td style="vertical-align:top">
+      <p id="selected-file-text"></p> 
+	    <div id="image-container"></div>
+    </td><td>
+      <!--header here-->
+    </td></tr>
  	</table>
- 
-  
-  <p id="selected-file-text"></p> 
-	<div id="image-container"></div>
    
    
 </body>
