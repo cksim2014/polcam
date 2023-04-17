@@ -10,7 +10,7 @@
 			// 이미지를 보여줄 <img> 요소 생성
 			var img = document.createElement("img");
 			img.src = "png/"+selectedValue+".png";			
-			img.width = "1024";
+			img.width = "600";
 			// 이미지를 보여줄 <div> 요소에 추가
 			var imageContainer = document.getElementById("image-container");
 			imageContainer.innerHTML = "";
@@ -24,7 +24,7 @@
 
   <style>
     .block1 {
-      max-width: 250px; 
+      max-width: 400; 
       max-height: 600px; 
       overflow:auto;
       display: block;
@@ -48,7 +48,7 @@
     	<p>Select data from the list:</p> 
       <div class="block1">
       <div class="block2">
-        <select id="file-selector" onchange="previewImage()", size=600>
+        <select id="file-selector" onchange="previewImage()", size=400>
           <optgroup label="2023/03">
           <option value="KPLO_POLCAM_MR_20230326_CAM1_1212_0392712_N00_N10">KPLO_POLCAM_MR_20230326_CAM1_1212_0392712_N00_N10</option>
           <option value="KPLO_POLCAM_MR_20230326_CAM1_1212_0392712_N10_N20">KPLO_POLCAM_MR_20230326_CAM1_1212_0392712_N10_N20</option>
