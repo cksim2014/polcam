@@ -12,16 +12,16 @@
 			img.src = "png/"+selectedValue+".png";			
 			img.width = "800";
 			// 이미지 링크를 추가
-			var a = document.createElement("a");
-			a.href = img.src;
-			a.target = "_blank";
+			// var a = document.createElement("a");
+			// a.href = img.src;
+			// a.target = "_blank";
 			// 이미지를 보여줄 <div> 요소에 추가
 			var imageContainer = document.getElementById("image-container");
 			imageContainer.innerHTML = "";			
 			imageContainer.appendChild(img);    			
 		      // 선택한 파일명을 텍스트로 화면에 출력
-		      var selectedFileText = document.getElementById("selected-file-text");
-		      selectedFileText.innerHTML = "Current file: " + selectedValue;
+		      // var selectedFileText = document.getElementById("selected-file-text");
+		      // selectedFileText.innerHTML = "Current file: " + selectedValue;
 		}
 	</script>
 
