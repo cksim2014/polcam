@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>특정 폴더 내 파일 목록</title>
+</head>
+<body>
+	<h1>특정 폴더 내 파일 목록</h1>
+	<ul id="fileList"></ul>
+	<script>
+		const folderPath = "./png/"; // 폴더 경로를 입력합니다.
+		const fileList = document.getElementById("fileList");
+
+		// AJAX를 사용하여 폴더 내 파일 목록을 가져옵니다.
+		const xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+			if (this.readyState === 4 && this.status === 200) {
+				const files = JSON.parse(this.responseText);
+				files.forEach(function(file) {
+					const li = document.createElement("li");
+					li.textContent = file;
+					fileList.appendChild(li);
+				});
+			}
+		};
+		xhr.open("GET", folderPath, true);
+		xhr.send();
+	</script>
+</body>
+</html>
