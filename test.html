@@ -1,60 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>PolCam data for internal users</title>
-	
-	<script>
-		function previewImage() {
-			// 선택된 옵션의 값을 가져옴
-			var selectedValue = document.getElementById("file-selector").value;
-			// 이미지를 보여줄 <img> 요소 생성
-			var img = document.createElement("img");
-			img.src = "png/"+selectedValue+".png";			
-			img.width = "600";
-			// 이미지를 보여줄 <div> 요소에 추가
-			var imageContainer = document.getElementById("image-container");
-			imageContainer.innerHTML = "";
-			imageContainer.appendChild(img);
-    			
-      // 선택한 파일명을 텍스트로 화면에 출력
-      var selectedFileText = document.getElementById("selected-file-text");
-      selectedFileText.innerHTML = "Current file: " + selectedValue;
-		}
-	</script>
-    	
-</head>
-<body>
-	<h1>PolCam data for internal users (Observational data)</h1>
+  <head>
+    <title>특정 PNG 파일 보여주기</title>
+  </head>
+  <body>
+    <h1>선택할 PNG 파일 목록</h1>
+    <select id="image-select" onchange="showImage()">
+      <option value="">--파일을 선택하세요--</option>
+    </select>
+    <h2>선택한 PNG 파일 보여주기</h2>
+    <img id="selected-image" src="" alt="선택한 PNG 파일">
+    <script>
+      var select = document.getElementById("image-select");
+      fetch('/png/202304/01')  // 데이터를 가져올 URL을 지정합니다.
+        .then(response => response.json())  // JSON 형식으로 파싱합니다.
+        .then(data => {
+          data.forEach((item) => {  // 가져온 데이터를 순회하면서 옵션 태그를 생성합니다.
+            var option = document.createElement("option");
+            option.value = item.path;
+            option.text = item.name;
+            select.appendChild(option);
+          });
+        });
 
-	<table>
-    		<tr><td>
-			<p><a href="orbit.html" target="_blank">Link to orbit information...</a></p>
-			<p>Select data from the list:</p>
-		</td><tr>
-		
-		<tr><td style="vertical-align:top" width=200>
-			<select id="file-selector" onchange="previewImage()" size=20>
-				<option value="">--Please select--</option>
-				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N00_N10">KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N00_N10</option>
-				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N10_N20">KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N10_N20</option>
-				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N20_N30">KPLO_POLCAM_MR_20230406_CAM1_1213_3585431_N20_N30</option>
-				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N00_N10">KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N00_N10</option>
-				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N10_N20">KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N10_N20</option>
-				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N20_N30">KPLO_POLCAM_MR_20230406_CAM1_1213_3642000_N20_N30</option>
-				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N00_N10">KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N00_N10</option>
-				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N10_N20">KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N10_N20</option>
-				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N20_N30">KPLO_POLCAM_MR_20230406_CAM1_1213_3698560_N20_N30</option>
-				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N00_N10">KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N00_N10</option>
-				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N10_N20">KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N10_N20</option>
-				<option value="KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N20_N30">KPLO_POLCAM_MR_20230406_CAM1_1213_3755128_N20_N30</option>
-			</select> 
-		</td><td style="vertical-align:top" width=600>
-			<p id="selected-file-text"></p> 
-			<div id="image-container"></div>
-		</td><td style="vertical-align:top" width=400>
-			header here
-		</td></tr>
-	</table>
-
-</body>
+      function showImage() {
+        var path = select.options[select.selectedIndex].value;
+        var img = document.getElementById("selected-image");
+        img.src = path;
+      }
+    </script>
+  </body>
 </html>
